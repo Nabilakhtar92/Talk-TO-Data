@@ -1,10 +1,10 @@
-pip install pandasai[excel,connectors]
-pip install streamlit
-pip install pandas
-pip install matplotlib
-pip install tiktoken
-pip install openai
-pip install google-cloud-storage
+#pip install pandasai[excel,connectors]
+#pip install streamlit
+#pip install pandas
+#pip install matplotlib
+#pip install tiktoken
+#pip install openai
+#pip install google-cloud-storage
 import os, csv, matplotlib, tiktoken, streamlit as st, pandas as pd
 from pandasai import SmartDataframe
 from pandasai.connectors import PandasConnector
