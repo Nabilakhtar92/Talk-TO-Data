@@ -1,0 +1,209 @@
+--------------------------------------------------
+Slide 1: Introduction to CBP
+--------------------------------------------------
+
+Good morning everyone.
+
+Before we talk about SAP, let's think about a simple business. Imagine we own a company that manufactures and sells T-shirts. At first, we may think a T-shirt is just a T-shirt. But in reality, customers don't buy just a T-shirt. They may want a specific color, a specific quality, a specific manufacturing country, or a specific market version. Now imagine thousands of customer orders coming every day. How do we make sure the right customer gets the right T-shirt? That is exactly the problem that Characteristics-Based Planning, or CBP, tries to solve. Today, we will understand how CBP works and what master data is required to make it work.
+
+--------------------------------------------------
+Slide 2: Why Organizations Need CBP
+--------------------------------------------------
+
+Let's think about your wardrobe. Suppose you have one T-shirt. Simple. Now suppose you have a Red T-shirt, a Blue T-shirt, a Premium T-shirt, an Economy T-shirt, a Germany-made T-shirt, and a China-made T-shirt. Suddenly you have many versions of the same product. Now imagine a company selling millions of products. The number of combinations grows very quickly. Planning becomes difficult because every variation has to be tracked. Businesses therefore need a smarter method to manage product variations. Instead of creating thousands of products, they want to use characteristics. That is where CBP helps.
+
+--------------------------------------------------
+Slide 3: Business Challenge Before CBP
+--------------------------------------------------
+
+Let's look at life before CBP. Suppose I manufacture only one T-shirt style. But the business wants 2 Colors, 3 Quality Grades, 2 Countries, and 3 Markets. Now let's do some simple math. 2 × 3 × 2 × 3 gives us 36 different combinations. Even though it is still the same T-shirt, I might have to create dozens of separate product records. Imagine tomorrow another color is added or another country is added. The number keeps growing. Eventually people spend more time maintaining master data than actually planning. This problem is called master data explosion.
+
+--------------------------------------------------
+Slide 4: Core Concept of CBP
+--------------------------------------------------
+
+This is where CBP changes everything. Instead of saying this is Product A, this is Product B, and this is Product C, we simply say this is a T-shirt. Then we describe the T-shirt using characteristics. Think about people. We all have names, but we also have characteristics such as height, hair color, nationality, and language. Similarly, CBP treats a product as one product and then describes it using characteristics. Our T-shirt has Color, Quality, Country of Origin, and Market Group. Now SAP can understand product variations without creating hundreds of products.
+
+--------------------------------------------------
+Slide 5: T-Shirt Business Example
+--------------------------------------------------
+
+Now let's imagine a real customer order. The customer says, "I want 100 T-shirts." The T-shirts must be Blue, Quality A, Made in Germany, and for the EMEA market. This is our demand.
+
+Now let's check our available inventory.
+
+Let's start with Supply 1. Blue? Yes. Quality A? Yes. Germany? Yes. EMEA? Yes. Everything matches. So Supply 1 can fulfill the demand.
+
+Now let's look at Supply 2. Blue? Yes. Germany? Yes. EMEA? Yes. But Quality is B instead of A. Would the customer be happy? No. So we cannot use this supply.
+
+Now Supply 3. Quality matches. Origin matches. Market matches. But color is Red instead of Blue. Again, not acceptable.
+
+Supply 4 is made in China instead of Germany.
+
+Supply 5 belongs to the Americas market instead of EMEA.
+
+So only Supply 1 qualifies. This is exactly how CBP thinks. It behaves like a very intelligent warehouse manager checking every requirement before sending the product.
+
+--------------------------------------------------
+Transition to Master Data
+--------------------------------------------------
+
+Now we understand what CBP does. But a question comes up. How does the system know what Blue means? How does it know what Quality A means? Where are these values stored? The answer is Master Data. Let's look at that next.
+
+--------------------------------------------------
+Slide 6: CBP Master Data Overview
+--------------------------------------------------
+
+Think of master data as the information that rarely changes. Your name is master data. Your date of birth is master data. Similarly, products and locations are master data for SAP. CBP also needs master data. The system needs to know what products exist, what locations exist, what characteristics exist, and what values are allowed. Without this information, CBP cannot work. Master data is like the dictionary of the planning system. If words do not exist in the dictionary, the system cannot understand them.
+
+--------------------------------------------------
+Slide 7: CBP Attributes
+--------------------------------------------------
+
+Attributes are simply characteristics. Our T-shirt has four attributes: Color, Quality, Country of Origin, and Market Group.
+
+Let's think about Color. Possible values are Red and Blue. The system knows these are valid options.
+
+Similarly, Quality has A, B, and C.
+
+Country of Origin has Germany and China.
+
+Market Group has EMEA, APJ, and Americas.
+
+These attributes help SAP identify exactly what the customer wants.
+
+--------------------------------------------------
+Slide 8: Attribute Sets
+--------------------------------------------------
+
+Now imagine you have four separate sheets of paper. One for Color, one for Quality, one for Origin, and one for Market. Managing them separately becomes difficult.
+
+So SAP groups them together. This group is called an Attribute Set. Think of it like a folder. Inside the folder we store all attributes related to the T-shirt.
+
+The folder name in our example is TSHIRT_ATTRIBUTES.
+
+Any T-shirt automatically gets access to all these attributes.
+
+--------------------------------------------------
+Slide 9: Flexible Master Data Model
+--------------------------------------------------
+
+Look at the difference.
+
+Before CBP, we have many products, many records, and many combinations.
+
+After CBP, we have one product and many characteristics.
+
+Suppose tomorrow Marketing says, "We are launching Green T-shirts."
+
+Without CBP, many new product variants would need to be created.
+
+With CBP, we simply add Green as a new Color value.
+
+One small change. Much easier to maintain.
+
+--------------------------------------------------
+Slide 10: How Demand Fulfillment Works
+--------------------------------------------------
+
+Let's imagine a customer submits an order online. That order enters SAP as demand. The demand receives characteristics such as Blue, Quality A, Germany, and EMEA.
+
+At the same time, available inventory and supply also carry characteristics.
+
+When the planning run starts, SAP compares demand and supply.
+
+If characteristics match, allocation happens.
+
+If characteristics don't match, SAP keeps searching.
+
+This process happens automatically in seconds.
+
+--------------------------------------------------
+Slide 11: CBP with OBP
+--------------------------------------------------
+
+Think of OBP as the brain and CBP as one of the rules used by that brain.
+
+OBP receives Demand, Supply, Inventory, and Business Rules.
+
+Then it evaluates everything together.
+
+Finally, it produces recommendations such as Purchase More, Produce More, Use Existing Stock, or Create Supply.
+
+In simple words, CBP tells OBP how matching should happen.
+
+--------------------------------------------------
+Slide 12: Supply & Demand Matching Example
+--------------------------------------------------
+
+This slide shows the same T-shirt example from a planner's perspective. We have a demand for 100 T-shirts with specific characteristics. The system checks all available supply options against the required characteristics. Only one supply matches all requirements, while the other supplies are rejected because of mismatches in Color, Quality, Country of Origin, or Market Group. This demonstrates how CBP improves planning accuracy and ensures that the correct inventory is allocated to the correct demand.
+
+--------------------------------------------------
+Slide 13: Benefits of CBP
+--------------------------------------------------
+
+If someone asks you, "What is the biggest benefit of CBP?" you can answer in one sentence.
+
+CBP helps companies manage variation without creating unnecessary products.
+
+This leads to less master data, less maintenance effort, better planning, better customer satisfaction, higher flexibility, and faster business decisions.
+
+--------------------------------------------------
+Slide 14: Functional Scope of CBP
+--------------------------------------------------
+
+CBP supports several important planning functions within SAP IBP. These include Order Key Figures, Safety Stock Planning, Forecast Consumption, Shelf Life Planning, Distribution Network Planning, and Interactive Planning.
+
+This means that businesses can use characteristic-based planning while still taking advantage of many advanced planning capabilities provided by SAP IBP.
+
+--------------------------------------------------
+Slide 15: Key Limitations
+--------------------------------------------------
+
+While CBP provides many benefits, it is important to understand its limitations.
+
+Currently, CBP does not support functions such as Optimizer, Deployment Run, Transportation Load Building, Product Substitution, Allocation Constraints, and certain OData Integrations.
+
+Understanding these limitations helps consultants design the right planning solution and set the correct expectations with business users.
+
+--------------------------------------------------
+Slide 16: Real-Life Business Use Cases
+--------------------------------------------------
+
+CBP is not limited to T-shirts.
+
+Fashion companies use CBP for planning products based on size, color, and style.
+
+Food and Beverage companies use CBP for packaging types, quality grades, and shelf-life requirements.
+
+Automotive companies use CBP for specifications and customer requirements.
+
+Consumer Goods companies use CBP for labels, promotions, sustainability requirements, and regional variations.
+
+Any business that deals with many product variations can benefit from Characteristics-Based Planning.
+
+--------------------------------------------------
+Slide 17: Key Takeaways & Closing
+--------------------------------------------------
+
+If you remember only one thing from today's session, remember this:
+
+CBP does not create separate products for every variation.
+
+Instead, it keeps one product and uses characteristics such as Color, Quality, Country of Origin, and Market Group to make planning decisions.
+
+That simple idea is what makes Characteristics-Based Planning so powerful.
+
+Before we close, let me ask one question.
+
+If tomorrow we introduce a new color called Green, what is easier?
+
+Creating 20 new product variants?
+
+Or simply adding Green as a new characteristic value?
+
+The answer is adding Green as a new characteristic value.
+
+And that is exactly why Characteristics-Based Planning was created.
+
+Thank you everyone. I am happy to take any questions.
